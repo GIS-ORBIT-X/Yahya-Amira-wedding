@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Mo'men & Menna — Wedding Invitation</title>
+
+<meta property="og:title" content="Mo'men & Menna — Wedding Invitation">
+<meta property="og:description" content="29 May 2026 • Al Aly Al Azeem">
+<meta property="og:type" content="website">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{
+  width:100%;
+  min-height:100%;
+  background:#f4eee6;
+  font-family:Georgia,"Times New Roman",serif;
+  overflow-x:hidden;
+  color:#4b3a32;
+}
+
+.page{
+  width:100%;
+  max-width:480px;
+  min-height:100vh;
+  margin:0 auto;
+  background:
+    radial-gradient(circle at top,#fffaf4 0%,#f4eadf 46%,#e5d3bf 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+.screen{
+  display:none;
+  min-height:100vh;
+  position:relative;
+  padding:28px 18px;
+}
+
+.screen.active{display:flex}
+
+.center{
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+/* Falling roses / hearts / stars */
+.falling{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:999;
+  overflow:hidden;
+}
+
+.fall-item{
+  position:absolute;
+  top:-60px;
+  opacity:.72;
+  filter:drop-shadow(0 0 8px rgba(210,160,90,.45));
+  animation:fallDown linear infinite;
+}
+
+@keyframes fallDown{
+  0%{transform:translateY(-80px) rotate(0deg) scale(.75)}
+  100%{transform:translateY(115vh) rotate(360deg) scale(1.15)}
+}
+
+/* Doves */
+.dove{
+  position:absolute;
+  pointer-events:none;
+  z-index:8;
+  filter:drop-shadow(0 12px 22px rgba(90,60,30,.18));
+}
+
+.dove-left{
+  width:96px;
+  left:16px;
+  top:86px;
+  opacity:.82;
+  animation:doveFloatLeft 4.2s ease-in-out infinite;
+}
+
+.dove-right{
+  width:96px;
+  right:16px;
+  top:86px;
+  opacity:.82;
+  animation:doveFloatRight 4.2s ease-in-out infinite;
+}
+
+.card-dove-left{
+  width:76px;
+  left:16px;
+  top:18px;
+  opacity:.52;
+  animation:doveCardLeft 4.6s ease-in-out infinite;
+}
+
+.card-dove-right{
+  width:76px;
+  right:16px;
+  top:18px;
+  opacity:.52;
+  animation:doveCardRight 4.6s ease-in-out infinite;
+}
+
+@keyframes doveFloatLeft{
+  0%{transform:translateY(0) rotate(-12deg)}
+  50%{transform:translateY(-14px) rotate(-4deg)}
+  100%{transform:translateY(0) rotate(-12deg)}
+}
+
+@keyframes doveFloatRight{
+  0%{transform:scaleX(-1) translateY(0) rotate(-12deg)}
+  50%{transform:scaleX(-1) translateY(-14px) rotate(-4deg)}
+  100%{transform:scaleX(-1) translateY(0) rotate(-12deg)}
+}
+
+@keyframes doveCardLeft{
+  0%{transform:translateY(0) rotate(-14deg)}
+  50%{transform:translateY(-9px) rotate(-7deg)}
+  100%{transform:translateY(0) rotate(-14deg)}
+}
+
+@keyframes doveCardRight{
+  0%{transform:scaleX(-1) translateY(0) rotate(-14deg)}
+  50%{transform:scaleX(-1) translateY(-9px) rotate(-7deg)}
+  100%{transform:scaleX(-1) translateY(0) rotate(-14deg)}
+}
+
+/* Envelope */
+.envelope{
+  width:88%;
+  height:250px;
+  position:relative;
+  border-radius:18px;
+  background:linear-gradient(145deg,#fff8ed,#e8d3ad);
+  box-shadow:
+    0 30px 70px rgba(82,55,25,.25),
+    inset 0 0 0 1px rgba(170,130,65,.35);
+  overflow:hidden;
+  animation:envelopeBreath 3.2s ease-in-out infinite;
+}
+
+@keyframes envelopeBreath{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.018)}
+  100%{transform:scale(1)}
+}
+
+.envelope:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(145deg,transparent 49%,rgba(176,135,70,.28) 50%,transparent 51%),
+    linear-gradient(215deg,transparent 49%,rgba(176,135,70,.28) 50%,transparent 51%);
+}
+
+.envelope:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:55%;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(204,166,95,.25));
+  clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);
+}
+
+.seal{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#d8b15f,#9f752b);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff7df;
+  letter-spacing:7px;
+  font-size:17px;
+  box-shadow:
+    0 12px 30px rgba(115,75,20,.35),
+    inset 0 1px 1px rgba(255,255,255,.45),
+    0 0 22px rgba(210,170,90,.55);
+  z-index:3;
+  animation:sealGlow 1.7s ease-in-out infinite;
+}
+
+@keyframes sealGlow{
+  0%{box-shadow:0 12px 30px rgba(115,75,20,.35),0 0 12px rgba(210,170,90,.45)}
+  50%{box-shadow:0 12px 30px rgba(115,75,20,.35),0 0 34px rgba(255,220,130,.9)}
+  100%{box-shadow:0 12px 30px rgba(115,75,20,.35),0 0 12px rgba(210,170,90,.45)}
+}
+
+.tap{
+  margin-top:26px;
+  letter-spacing:10px;
+  font-size:13px;
+  color:#8b7a68;
+  animation:tapGlow 1.8s ease-in-out infinite;
+}
+
+@keyframes tapGlow{
+  0%,100%{opacity:.55}
+  50%{opacity:1}
+}
+
+.open-btn{
+  position:absolute;
+  inset:0;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  z-index:10;
+}
+
+/* Invitation Card */
+.card{
+  width:100%;
+  background:#fffaf2;
+  border-radius:20px;
+  padding:42px 22px 28px;
+  box-shadow:0 25px 70px rgba(70,45,20,.18);
+  border:1px solid rgba(178,139,78,.45);
+  position:relative;
+  overflow:hidden;
+  animation:cardReveal .75s ease both;
+}
+
+@keyframes cardReveal{
+  from{opacity:0;transform:translateY(20px) scale(.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.card:before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border:1px solid rgba(185,145,80,.5);
+  border-radius:14px;
+  pointer-events:none;
+}
+
+.top-line{
+  text-align:center;
+  font-size:12px;
+  letter-spacing:5px;
+  color:#8b7762;
+  margin-bottom:24px;
+}
+
+.names{
+  text-align:center;
+  font-size:48px;
+  line-height:1.12;
+  color:#9d7047;
+  font-style:italic;
+}
+
+.amp{
+  text-align:center;
+  font-size:28px;
+  color:#b99155;
+  margin:6px 0;
+}
+
+.desc{
+  text-align:center;
+  font-size:16px;
+  line-height:1.7;
+  margin:24px 0;
+  color:#5c4a3e;
+}
+
+.divider{
+  width:120px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#b89252,transparent);
+  margin:20px auto;
+}
+
+.info{text-align:center;margin:18px 0}
+
+.label{
+  font-size:12px;
+  letter-spacing:5px;
+  color:#a18460;
+  margin-bottom:8px;
+}
+
+.big-date{
+  font-size:58px;
+  color:#8d633f;
+  line-height:1;
+}
+
+.text{
+  font-size:17px;
+  line-height:1.8;
+}
+
+/* Buttons */
+.location-btn,.calendar-btn{
+  width:86%;
+  height:50px;
+  margin:20px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  font-family:Georgia,serif;
+  letter-spacing:3px;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition:.25s ease;
+}
+
+.location-btn{
+  border:1px solid rgba(170,125,55,.6);
+  background:linear-gradient(145deg,#fffaf1,#ead3a4);
+  color:#6c4b30;
+  box-shadow:0 10px 24px rgba(150,105,40,.14);
+}
+
+.calendar-btn{
+  border:0;
+  background:linear-gradient(145deg,#c6a45b,#9c7433);
+  color:#fff8e6;
+  box-shadow:0 14px 30px rgba(130,85,25,.24);
+}
+
+.location-btn:before,
+.calendar-btn:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:80%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);
+  animation:buttonShine 2.2s ease-in-out infinite;
+}
+
+@keyframes buttonShine{
+  0%{left:-120%}
+  55%{left:130%}
+  100%{left:130%}
+}
+
+button:active{
+  transform:scale(.96);
+}
+
+/* Countdown */
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin:24px 0;
+}
+
+.box{
+  height:72px;
+  border-radius:12px;
+  border:1px solid rgba(180,140,80,.35);
+  background:#fffbf5;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 20px rgba(100,70,30,.08);
+}
+
+.num{font-size:25px;color:#8d633f}
+.cap{font-size:10px;letter-spacing:2px;color:#9b8a78;margin-top:6px}
+
+.quran{
+  text-align:center;
+  font-size:20px;
+  line-height:2;
+  direction:rtl;
+  margin-top:18px;
+  color:#4d4038;
+}
+
+.surah{
+  text-align:center;
+  margin-top:10px;
+  color:#a18460;
+  font-size:13px;
+}
+
+.signature{
+  text-align:center;
+  margin-top:22px;
+  font-size:27px;
+  color:#a67852;
+  font-style:italic;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="weddingMusic" src="wedding-music.mp3" loop preload="auto"></audio>
+<audio id="zaghareetSound" src="zaghareet.mp3" preload="auto"></audio>
+
+<div class="falling" id="falling"></div>
+
+<div class="page">
+
+<section id="envelopeScreen" class="screen active">
+  <img src="dove.png" class="dove dove-left" alt="">
+  <img src="dove.png" class="dove dove-right" alt="">
+
+  <div class="center">
+    <div class="envelope">
+      <div class="seal">M♥M</div>
+      <button class="open-btn" onclick="openInvitation()" aria-label="Open Invitation"></button>
+    </div>
+    <div class="tap">TAP TO OPEN</div>
+  </div>
+</section>
+
+<section id="invitationScreen" class="screen">
+  <div class="card">
+    <img src="dove.png" class="dove card-dove-left" alt="">
+    <img src="dove.png" class="dove card-dove-right" alt="">
+
+    <div class="top-line">TOGETHER WITH THEIR FAMILIES</div>
+
+    <div class="names">Mo'men</div>
+    <div class="amp">&</div>
+    <div class="names">Menna</div>
+
+    <div class="desc">
+      request the pleasure of your company<br>
+      at the celebration of their wedding
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="info">
+      <div class="label">WHEN</div>
+      <div class="text">Friday</div>
+      <div class="big-date">29</div>
+      <div class="text">May 2026 · 4:00 PM</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="info">
+      <div class="label">WHERE</div>
+      <div class="text">Al Aly Al Azeem</div>
+      <div class="text">Almazah</div>
+    </div>
+
+    <button class="location-btn" onclick="openLocation()">Open in Google Maps</button>
+
+    <div class="countdown">
+      <div class="box"><div id="days" class="num">00</div><div class="cap">DAYS</div></div>
+      <div class="box"><div id="hours" class="num">00</div><div class="cap">HOURS</div></div>
+      <div class="box"><div id="minutes" class="num">00</div><div class="cap">MINUTES</div></div>
+      <div class="box"><div id="seconds" class="num">00</div><div class="cap">SECONDS</div></div>
+    </div>
+
+    <button class="calendar-btn" onclick="addToCalendar()">Add to Calendar</button>
+
+    <div class="quran">
+      وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا<br>
+      لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+    </div>
+
+    <div class="surah">سورة الروم — الآية ٢١</div>
+
+    <div class="signature">With love, Mo'men & Menna</div>
+  </div>
+</section>
+
+</div>
+
+<script>
+const locationUrl = "https://maps.app.goo.gl/gLgjUCauDo4yuqns7?g_st=ac";
+const weddingDate = new Date("2026-05-29T16:00:00").getTime();
+
+const weddingMusic = document.getElementById("weddingMusic");
+const zaghareetSound = document.getElementById("zaghareetSound");
+
+function vibratePhone(){
+  if("vibrate" in navigator){
+    navigator.vibrate([90,40,90]);
+  }
+}
+
+function playAudio(){
+  zaghareetSound.currentTime = 0;
+  zaghareetSound.volume = 0.9;
+  zaghareetSound.play().catch(()=>{});
+
+  weddingMusic.volume = 0.68;
+  weddingMusic.play().catch(()=>{});
+}
+
+function openInvitation(){
+  vibratePhone();
+  playAudio();
+
+  document.getElementById("envelopeScreen").classList.remove("active");
+  document.getElementById("invitationScreen").classList.add("active");
+}
+
+function openLocation(){
+  vibratePhone();
+  playAudio();
+  window.open(locationUrl,"_blank");
+}
+
+function addToCalendar(){
+  vibratePhone();
+  playAudio();
+
+  const url =
+    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=Mo'men%20%26%20Menna%20Wedding" +
+    "&dates=20260529T130000Z/20260529T160000Z" +
+    "&details=Wedding%20Invitation" +
+    "&location=Al%20Aly%20Al%20Azeem%2C%20Almazah";
+
+  window.open(url,"_blank");
+}
+
+function updateCountdown(){
+  const distance = weddingDate - Date.now();
+
+  const d = document.getElementById("days");
+  const h = document.getElementById("hours");
+  const m = document.getElementById("minutes");
+  const s = document.getElementById("seconds");
+
+  if(distance <= 0){
+    d.textContent="00";
+    h.textContent="00";
+    m.textContent="00";
+    s.textContent="00";
+    return;
+  }
+
+  d.textContent = Math.floor(distance/(1000*60*60*24));
+  h.textContent = String(Math.floor((distance%(1000*60*60*24))/(1000*60*60))).padStart(2,"0");
+  m.textContent = String(Math.floor((distance%(1000*60*60))/(1000*60))).padStart(2,"0");
+  s.textContent = String(Math.floor((distance%(1000*60))/1000)).padStart(2,"0");
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+/* Falling animation */
+const falling = document.getElementById("falling");
+const items = ["🌹","💗","💕","💖","✨","⭐","✦"];
+
+for(let i=0;i<34;i++){
+  const el = document.createElement("div");
+  el.className = "fall-item";
+  el.textContent = items[Math.floor(Math.random()*items.length)];
+  el.style.left = Math.random()*100 + "%";
+  el.style.fontSize = (10 + Math.random()*15) + "px";
+  el.style.animationDuration = (7 + Math.random()*8) + "s";
+  el.style.animationDelay = (Math.random()*7) + "s";
+  falling.appendChild(el);
+}
+</script>
+
+</body>
+</html>
