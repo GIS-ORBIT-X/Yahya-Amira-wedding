@@ -11,15 +11,15 @@
 <meta property="og:description" content="26 June 2026 • Tokh Wedding Hall">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/">
-<meta property="og:image" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10012">
-<meta property="og:image:secure_url" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10012">
+<meta property="og:image" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10013">
+<meta property="og:image:secure_url" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10013">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Yahya And Amira — Wedding Invitation">
 <meta name="twitter:description" content="26 June 2026 • Tokh Wedding Hall">
-<meta name="twitter:image" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10012">
+<meta name="twitter:image" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10013">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;700;800;900&display=swap');
@@ -244,8 +244,7 @@ html,body{
 
 .open-btn::before,
 .location-btn::before,
-.calendar-btn::before,
-.sound-btn::before{
+.calendar-btn::before{
   content:"";
   position:absolute;
   top:-60%;
@@ -453,7 +452,7 @@ html,body{
   line-height:1.7;
 }
 
-.location-btn,.calendar-btn,.sound-btn{
+.location-btn,.calendar-btn{
   width:88%;
   height:54px;
   margin:16px auto;
@@ -472,7 +471,7 @@ html,body{
   color:#ffe8f6;
 }
 
-.location-btn,.sound-btn{
+.location-btn{
   border:1px solid rgba(255,255,255,.3);
   background:rgba(255,255,255,.13);
 }
@@ -595,8 +594,8 @@ button:active{transform:scale(.96)}
 
 <body>
 
-<audio id="zaghareetSound" src="zaghareet.mp3?v=10012" preload="auto"></audio>
-<audio id="weddingMusic" src="wedding-music.mp3?v=10012" loop preload="auto"></audio>
+<audio id="zaghareetSound" src="zaghareet.mp3?v=10013" preload="auto" playsinline></audio>
+<audio id="weddingMusic" src="wedding-music.mp3?v=10013" loop preload="auto" playsinline></audio>
 
 <div class="page">
   <div class="bg-orb orb-1"></div>
@@ -604,8 +603,8 @@ button:active{transform:scale(.96)}
   <div class="bg-orb orb-3"></div>
 
   <section id="envelopeScreen" class="screen active">
-    <img src="dove.png?v=10012" class="dove env-dove-left" alt="">
-    <img src="dove.png?v=10012" class="dove env-dove-right" alt="">
+    <img src="dove.png?v=10013" class="dove env-dove-left" alt="">
+    <img src="dove.png?v=10013" class="dove env-dove-right" alt="">
 
     <div class="center">
       <div class="envelope-wrap">
@@ -634,8 +633,8 @@ button:active{transform:scale(.96)}
 
   <section id="invitationScreen" class="screen">
     <div class="card">
-      <img src="dove.png?v=10012" class="dove card-dove-left" alt="">
-      <img src="dove.png?v=10012" class="dove card-dove-right" alt="">
+      <img src="dove.png?v=10013" class="dove card-dove-left" alt="">
+      <img src="dove.png?v=10013" class="dove card-dove-right" alt="">
 
       <div class="badge">WEDDING CELEBRATION</div>
 
@@ -664,7 +663,6 @@ button:active{transform:scale(.96)}
         </div>
       </div>
 
-      <button class="sound-btn" onclick="enableSound()">Enable Music</button>
       <button class="location-btn" onclick="openLocation()">Open Location</button>
 
       <div class="countdown">
@@ -694,38 +692,49 @@ const weddingDate = new Date("2026-06-26T16:00:00").getTime();
 const zaghareetSound = document.getElementById("zaghareetSound");
 const weddingMusic = document.getElementById("weddingMusic");
 
+let invitationOpened = false;
+
 function vibratePhone(){
   if("vibrate" in navigator) navigator.vibrate([80,35,80]);
 }
 
-function playZaghareet(){
-  if(!zaghareetSound) return;
+function startWeddingAudio(){
+  if(!zaghareetSound || !weddingMusic) return;
+
+  zaghareetSound.pause();
+  weddingMusic.pause();
+
   zaghareetSound.currentTime = 0;
+  weddingMusic.currentTime = 0;
+
   zaghareetSound.volume = 0.95;
-  zaghareetSound.play().catch(()=>{});
-}
-
-function playWeddingMusic(){
-  if(!weddingMusic) return;
   weddingMusic.volume = 0.58;
-  weddingMusic.play().catch(()=>{});
-}
 
-function enableSound(){
-  vibratePhone();
-  playWeddingMusic();
+  zaghareetSound.play().catch(()=>{});
+
+  zaghareetSound.onended = function(){
+    weddingMusic.play().catch(()=>{});
+  };
+
+  setTimeout(function(){
+    if(weddingMusic.paused){
+      weddingMusic.play().catch(()=>{});
+    }
+  }, 3000);
 }
 
 function openInvitation(){
+  if(invitationOpened) return;
+  invitationOpened = true;
+
   vibratePhone();
-  playZaghareet();
+  startWeddingAudio();
 
   document.getElementById("envelope").classList.add("open");
 
-  setTimeout(()=>{
+  setTimeout(function(){
     document.getElementById("envelopeScreen").classList.remove("active");
     document.getElementById("invitationScreen").classList.add("active");
-    playWeddingMusic();
   },1350);
 }
 
@@ -755,7 +764,10 @@ function updateCountdown(){
   const s = document.getElementById("seconds");
 
   if(distance <= 0){
-    d.textContent=h.textContent=m.textContent=s.textContent="00";
+    d.textContent = "00";
+    h.textContent = "00";
+    m.textContent = "00";
+    s.textContent = "00";
     return;
   }
 
