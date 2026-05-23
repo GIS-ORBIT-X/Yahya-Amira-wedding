@@ -11,15 +11,15 @@
 <meta property="og:description" content="26 June 2026 • Tokh Wedding Hall">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/">
-<meta property="og:image" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10008">
-<meta property="og:image:secure_url" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10008">
+<meta property="og:image" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10011">
+<meta property="og:image:secure_url" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10011">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Yahya And Amira — Wedding Invitation">
 <meta name="twitter:description" content="26 June 2026 • Tokh Wedding Hall">
-<meta name="twitter:image" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10008">
+<meta name="twitter:image" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10011">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;700;800;900&display=swap');
@@ -87,24 +87,22 @@ html,body{
   to{transform:translateY(-20px) scale(1.08)}
 }
 
-/* DOVE IMAGE */
 .dove{
   position:absolute;
   height:auto;
   pointer-events:none;
   user-select:none;
-  z-index:99999;
+  z-index:999999;
   opacity:1;
   display:block;
   object-fit:contain;
   filter:
-    brightness(1.15)
-    contrast(1.05)
+    brightness(1.18)
+    contrast(1.08)
     drop-shadow(0 0 10px rgba(255,235,250,.95))
-    drop-shadow(0 0 24px rgba(255,120,200,.55));
+    drop-shadow(0 0 24px rgba(255,120,200,.6));
 }
 
-/* ENVELOPE SCREEN DOVES */
 .env-dove-left{
   width:155px;
   top:118px;
@@ -119,7 +117,6 @@ html,body{
   transform:scaleX(-1) rotate(-8deg);
 }
 
-/* CARD SCREEN DOVES */
 .card-dove-left{
   width:112px;
   top:36px;
@@ -247,7 +244,8 @@ html,body{
 
 .open-btn::before,
 .location-btn::before,
-.calendar-btn::before{
+.calendar-btn::before,
+.sound-btn::before{
   content:"";
   position:absolute;
   top:-60%;
@@ -455,7 +453,7 @@ html,body{
   line-height:1.7;
 }
 
-.location-btn,.calendar-btn{
+.location-btn,.calendar-btn,.sound-btn{
   width:88%;
   height:54px;
   margin:16px auto;
@@ -474,7 +472,7 @@ html,body{
   color:#ffe8f6;
 }
 
-.location-btn{
+.location-btn,.sound-btn{
   border:1px solid rgba(255,255,255,.3);
   background:rgba(255,255,255,.13);
 }
@@ -597,8 +595,8 @@ button:active{transform:scale(.96)}
 
 <body>
 
-<audio id="zaghareetSound" src="zaghareet.mp3" preload="auto"></audio>
-<audio id="weddingMusic" src="wedding-music.mp3" loop preload="auto"></audio>
+<audio id="zaghareetSound" src="zaghareet.mp3?v=10011" preload="auto" playsinline></audio>
+<audio id="weddingMusic" src="wedding-music.mp3?v=10011" loop preload="auto" playsinline></audio>
 
 <div class="page">
   <div class="bg-orb orb-1"></div>
@@ -606,8 +604,8 @@ button:active{transform:scale(.96)}
   <div class="bg-orb orb-3"></div>
 
   <section id="envelopeScreen" class="screen active">
-    <img src="dove.webp?v=10008" class="dove env-dove-left" alt="">
-    <img src="dove.webp?v=10008" class="dove env-dove-right" alt="">
+    <img src="dove.png?v=10011" class="dove env-dove-left" alt="">
+    <img src="dove.png?v=10011" class="dove env-dove-right" alt="">
 
     <div class="center">
       <div class="envelope-wrap">
@@ -636,8 +634,8 @@ button:active{transform:scale(.96)}
 
   <section id="invitationScreen" class="screen">
     <div class="card">
-      <img src="dove.webp?v=10008" class="dove card-dove-left" alt="">
-      <img src="dove.webp?v=10008" class="dove card-dove-right" alt="">
+      <img src="dove.png?v=10011" class="dove card-dove-left" alt="">
+      <img src="dove.png?v=10011" class="dove card-dove-right" alt="">
 
       <div class="badge">WEDDING CELEBRATION</div>
 
@@ -666,6 +664,7 @@ button:active{transform:scale(.96)}
         </div>
       </div>
 
+      <button class="sound-btn" onclick="enableSound()">Enable Music</button>
       <button class="location-btn" onclick="openLocation()">Open Location</button>
 
       <div class="countdown">
@@ -702,15 +701,19 @@ function vibratePhone(){
 function playZaghareet(){
   if(!zaghareetSound) return;
   zaghareetSound.currentTime = 0;
-  zaghareetSound.volume = 0.9;
+  zaghareetSound.volume = 0.95;
   zaghareetSound.play().catch(()=>{});
 }
 
 function playWeddingMusic(){
   if(!weddingMusic) return;
-  weddingMusic.currentTime = 0;
   weddingMusic.volume = 0.58;
   weddingMusic.play().catch(()=>{});
+}
+
+function enableSound(){
+  vibratePhone();
+  playWeddingMusic();
 }
 
 function openInvitation(){
