@@ -4,22 +4,35 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Mo'men & Menna — Wedding Invitation</title>
+<title>Yahya And Amira — Wedding Invitation</title>
 
-<meta property="og:title" content="Mo'men & Menna — Wedding Invitation">
-<meta property="og:description" content="29 May 2026 • Al Aly Al Azeem">
+<meta name="description" content="A premium digital wedding invitation for Yahya and Amira. 26 June 2026 • Tokh Wedding Hall.">
+<meta property="og:title" content="Yahya And Amira — Wedding Invitation">
+<meta property="og:description" content="26 June 2026 • Tokh Wedding Hall">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/">
+<meta property="og:image" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10008">
+<meta property="og:image:secure_url" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10008">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yahya And Amira — Wedding Invitation">
+<meta name="twitter:description" content="26 June 2026 • Tokh Wedding Hall">
+<meta name="twitter:image" content="https://gis-orbit-x.github.io/Yahya-Amira-wedding/preview.jpg?v=10008">
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;700;800;900&display=swap');
+
 *{box-sizing:border-box;margin:0;padding:0}
 
 html,body{
   width:100%;
   min-height:100%;
-  background:#f4eee6;
-  font-family:Georgia,"Times New Roman",serif;
+  font-family:"Montserrat",sans-serif;
   overflow-x:hidden;
-  color:#4b3a32;
+  color:#fff;
+  background:#09030d;
 }
 
 .page{
@@ -27,17 +40,21 @@ html,body{
   max-width:480px;
   min-height:100vh;
   margin:0 auto;
-  background:
-    radial-gradient(circle at top,#fffaf4 0%,#f4eadf 46%,#e5d3bf 100%);
   position:relative;
   overflow:hidden;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(255,0,160,.24),transparent 32%),
+    radial-gradient(circle at 82% 20%,rgba(160,80,255,.18),transparent 34%),
+    radial-gradient(circle at 50% 95%,rgba(255,140,60,.16),transparent 40%),
+    linear-gradient(160deg,#07020b 0%,#190721 45%,#35132f 100%);
 }
 
 .screen{
   display:none;
   min-height:100vh;
   position:relative;
-  padding:28px 18px;
+  padding:26px 16px;
+  overflow:hidden;
 }
 
 .screen.active{display:flex}
@@ -49,112 +66,101 @@ html,body{
   align-items:center;
   justify-content:center;
   flex-direction:column;
+  position:relative;
+  z-index:5;
 }
 
-/* Falling roses / hearts / stars */
-.falling{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:999;
-  overflow:hidden;
-}
-
-.fall-item{
+.bg-orb{
   position:absolute;
-  top:-60px;
-  opacity:.72;
-  filter:drop-shadow(0 0 8px rgba(210,160,90,.45));
-  animation:fallDown linear infinite;
+  border-radius:50%;
+  filter:blur(14px);
+  opacity:.4;
+  animation:orbMove 8s ease-in-out infinite alternate;
 }
 
-@keyframes fallDown{
-  0%{transform:translateY(-80px) rotate(0deg) scale(.75)}
-  100%{transform:translateY(115vh) rotate(360deg) scale(1.15)}
+.orb-1{width:210px;height:210px;background:#ff2fa3;top:8%;left:-70px}
+.orb-2{width:250px;height:250px;background:#ff9b45;bottom:4%;right:-90px;animation-delay:1.5s}
+.orb-3{width:170px;height:170px;background:#8f5cff;top:38%;right:-80px;animation-delay:.8s}
+
+@keyframes orbMove{
+  from{transform:translateY(0) scale(1)}
+  to{transform:translateY(-20px) scale(1.08)}
 }
 
-/* Doves */
+/* DOVE IMAGE */
 .dove{
   position:absolute;
+  height:auto;
   pointer-events:none;
-  z-index:8;
-  filter:drop-shadow(0 12px 22px rgba(90,60,30,.18));
+  user-select:none;
+  z-index:99999;
+  opacity:1;
+  display:block;
+  object-fit:contain;
+  filter:
+    brightness(1.15)
+    contrast(1.05)
+    drop-shadow(0 0 10px rgba(255,235,250,.95))
+    drop-shadow(0 0 24px rgba(255,120,200,.55));
 }
 
-.dove-left{
-  width:96px;
-  left:16px;
-  top:86px;
-  opacity:.82;
-  animation:doveFloatLeft 4.2s ease-in-out infinite;
+/* ENVELOPE SCREEN DOVES */
+.env-dove-left{
+  width:155px;
+  top:118px;
+  left:8px;
+  transform:rotate(-8deg);
 }
 
-.dove-right{
-  width:96px;
-  right:16px;
-  top:86px;
-  opacity:.82;
-  animation:doveFloatRight 4.2s ease-in-out infinite;
+.env-dove-right{
+  width:155px;
+  top:118px;
+  right:8px;
+  transform:scaleX(-1) rotate(-8deg);
 }
 
+/* CARD SCREEN DOVES */
 .card-dove-left{
-  width:76px;
-  left:16px;
-  top:18px;
-  opacity:.52;
-  animation:doveCardLeft 4.6s ease-in-out infinite;
+  width:112px;
+  top:36px;
+  left:12px;
+  transform:rotate(-8deg);
 }
 
 .card-dove-right{
-  width:76px;
-  right:16px;
-  top:18px;
-  opacity:.52;
-  animation:doveCardRight 4.6s ease-in-out infinite;
+  width:112px;
+  top:36px;
+  right:12px;
+  transform:scaleX(-1) rotate(-8deg);
 }
 
-@keyframes doveFloatLeft{
-  0%{transform:translateY(0) rotate(-12deg)}
-  50%{transform:translateY(-14px) rotate(-4deg)}
-  100%{transform:translateY(0) rotate(-12deg)}
-}
-
-@keyframes doveFloatRight{
-  0%{transform:scaleX(-1) translateY(0) rotate(-12deg)}
-  50%{transform:scaleX(-1) translateY(-14px) rotate(-4deg)}
-  100%{transform:scaleX(-1) translateY(0) rotate(-12deg)}
-}
-
-@keyframes doveCardLeft{
-  0%{transform:translateY(0) rotate(-14deg)}
-  50%{transform:translateY(-9px) rotate(-7deg)}
-  100%{transform:translateY(0) rotate(-14deg)}
-}
-
-@keyframes doveCardRight{
-  0%{transform:scaleX(-1) translateY(0) rotate(-14deg)}
-  50%{transform:scaleX(-1) translateY(-9px) rotate(-7deg)}
-  100%{transform:scaleX(-1) translateY(0) rotate(-14deg)}
-}
-
-/* Envelope */
-.envelope{
-  width:88%;
-  height:250px;
+.envelope-wrap{
+  width:90%;
+  height:300px;
   position:relative;
-  border-radius:18px;
-  background:linear-gradient(145deg,#fff8ed,#e8d3ad);
-  box-shadow:
-    0 30px 70px rgba(82,55,25,.25),
-    inset 0 0 0 1px rgba(170,130,65,.35);
-  overflow:hidden;
-  animation:envelopeBreath 3.2s ease-in-out infinite;
+  perspective:1000px;
+  z-index:8;
+  margin-top:95px;
 }
 
-@keyframes envelopeBreath{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.018)}
-  100%{transform:scale(1)}
+.envelope{
+  width:100%;
+  height:260px;
+  position:relative;
+  border-radius:30px;
+  background:linear-gradient(145deg,#fff4f8 0%,#ffc5dd 46%,#d84392 100%);
+  box-shadow:
+    0 26px 55px rgba(0,0,0,.36),
+    0 0 34px rgba(255,50,170,.26),
+    inset 0 0 0 1px rgba(255,255,255,.55);
+  overflow:hidden;
+  transform-style:preserve-3d;
+  animation:envelopeFloat 3.8s ease-in-out infinite;
+}
+
+@keyframes envelopeFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
 }
 
 .envelope:before{
@@ -162,61 +168,71 @@ html,body{
   position:absolute;
   inset:0;
   background:
-    linear-gradient(145deg,transparent 49%,rgba(176,135,70,.28) 50%,transparent 51%),
-    linear-gradient(215deg,transparent 49%,rgba(176,135,70,.28) 50%,transparent 51%);
+    linear-gradient(145deg,transparent 49.5%,rgba(255,255,255,.48) 50%,transparent 50.5%),
+    linear-gradient(215deg,transparent 49.5%,rgba(255,255,255,.36) 50%,transparent 50.5%);
 }
 
-.envelope:after{
-  content:"";
+.flap{
   position:absolute;
   left:0;
-  right:0;
-  bottom:0;
-  height:55%;
-  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(204,166,95,.25));
-  clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);
+  top:0;
+  width:100%;
+  height:60%;
+  background:linear-gradient(180deg,#fff9fb,#ff9ec8);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center;
+  z-index:5;
+  transition:1s cubic-bezier(.2,.9,.18,1.2);
 }
+
+.envelope.open .flap{transform:rotateX(180deg)}
 
 .seal{
   position:absolute;
   left:50%;
-  top:50%;
+  top:54%;
   transform:translate(-50%,-50%);
-  width:88px;
-  height:88px;
+  width:122px;
+  height:122px;
   border-radius:50%;
-  background:linear-gradient(145deg,#d8b15f,#9f752b);
+  background:
+    radial-gradient(circle at 30% 24%,rgba(255,255,255,.32),transparent 30%),
+    linear-gradient(145deg,#ff2f9a,#ff944d);
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#fff7df;
-  letter-spacing:7px;
-  font-size:17px;
+  flex-direction:column;
+  z-index:8;
+  color:#fff;
   box-shadow:
-    0 12px 30px rgba(115,75,20,.35),
-    inset 0 1px 1px rgba(255,255,255,.45),
-    0 0 22px rgba(210,170,90,.55);
-  z-index:3;
-  animation:sealGlow 1.7s ease-in-out infinite;
+    0 14px 28px rgba(255,64,160,.42),
+    0 0 28px rgba(255,60,180,.3);
+  transition:.6s ease;
 }
 
-@keyframes sealGlow{
-  0%{box-shadow:0 12px 30px rgba(115,75,20,.35),0 0 12px rgba(210,170,90,.45)}
-  50%{box-shadow:0 12px 30px rgba(115,75,20,.35),0 0 34px rgba(255,220,130,.9)}
-  100%{box-shadow:0 12px 30px rgba(115,75,20,.35),0 0 12px rgba(210,170,90,.45)}
+.seal-name{
+  font-family:"Dancing Script",cursive;
+  font-size:32px;
+  line-height:.88;
+  font-weight:700;
+  color:#fff7fc;
+  text-shadow:
+    0 0 7px rgba(255,255,255,.9),
+    0 0 16px rgba(255,70,170,.78);
 }
 
-.tap{
-  margin-top:26px;
-  letter-spacing:10px;
-  font-size:13px;
-  color:#8b7a68;
-  animation:tapGlow 1.8s ease-in-out infinite;
+.seal-and{
+  margin:8px 0 6px;
+  font-family:"Cinzel",serif;
+  font-size:8px;
+  letter-spacing:2.8px;
+  font-weight:900;
+  color:#fff2fb;
 }
 
-@keyframes tapGlow{
-  0%,100%{opacity:.55}
-  50%{opacity:1}
+.envelope.open .seal{
+  transform:translate(-50%,-50%) scale(.18);
+  opacity:0;
 }
 
 .open-btn{
@@ -225,148 +241,252 @@ html,body{
   border:0;
   background:transparent;
   cursor:pointer;
-  z-index:10;
+  z-index:30;
+  overflow:hidden;
 }
 
-/* Invitation Card */
+.open-btn::before,
+.location-btn::before,
+.calendar-btn::before{
+  content:"";
+  position:absolute;
+  top:-60%;
+  left:-70%;
+  width:42%;
+  height:220%;
+  background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.16) 34%,rgba(255,238,190,.95) 50%,rgba(255,130,215,.5) 64%,transparent 100%);
+  transform:rotate(24deg);
+  animation:royalButtonShine 2.8s ease-in-out infinite;
+  pointer-events:none;
+  z-index:4;
+}
+
+@keyframes royalButtonShine{
+  0%{left:-75%;opacity:0}
+  16%{opacity:1}
+  55%{left:130%;opacity:1}
+  100%{left:130%;opacity:0}
+}
+
+.tap{
+  margin-top:26px;
+  font-size:12px;
+  letter-spacing:6px;
+  font-weight:900;
+  color:#ffd6ec;
+  text-shadow:0 0 12px rgba(255,80,170,.85);
+  animation:pulse 1.7s ease-in-out infinite;
+}
+
+.tap-arrow{
+  margin-top:16px;
+  font-size:34px;
+  color:#ffb8e2;
+  text-shadow:0 0 14px #ff4fbd;
+  animation:arrowPulse 1.3s ease-in-out infinite;
+}
+
+@keyframes arrowPulse{
+  0%,100%{transform:translateY(0);opacity:.5}
+  50%{transform:translateY(-9px);opacity:1}
+}
+
+@keyframes pulse{
+  0%,100%{opacity:.45;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.04)}
+}
+
+.burst{
+  position:absolute;
+  left:50%;
+  top:42%;
+  width:10px;
+  height:10px;
+  pointer-events:none;
+  z-index:25;
+}
+
+.petal{
+  position:absolute;
+  width:16px;
+  height:24px;
+  border-radius:70% 30% 70% 30%;
+  background:linear-gradient(145deg,#fff0f5,#ff4f91);
+  opacity:0;
+  box-shadow:0 0 10px rgba(255,120,170,.5);
+}
+
+.envelope.open + .burst .petal{
+  animation:burstOut 1.25s ease-out forwards;
+}
+
+.petal:nth-child(1){--x:-125px;--y:-120px;animation-delay:.04s}
+.petal:nth-child(2){--x:-70px;--y:-155px;animation-delay:.12s}
+.petal:nth-child(3){--x:18px;--y:-165px;animation-delay:.18s}
+.petal:nth-child(4){--x:90px;--y:-135px;animation-delay:.24s}
+.petal:nth-child(5){--x:130px;--y:-65px;animation-delay:.3s}
+.petal:nth-child(6){--x:-135px;--y:-55px;animation-delay:.36s}
+
+@keyframes burstOut{
+  0%{transform:translate(0,0) scale(.15) rotate(0);opacity:0}
+  22%{opacity:1}
+  100%{transform:translate(var(--x),var(--y)) scale(1.25) rotate(360deg);opacity:0}
+}
+
 .card{
   width:100%;
-  background:#fffaf2;
-  border-radius:20px;
-  padding:42px 22px 28px;
-  box-shadow:0 25px 70px rgba(70,45,20,.18);
-  border:1px solid rgba(178,139,78,.45);
+  min-height:92vh;
   position:relative;
   overflow:hidden;
-  animation:cardReveal .75s ease both;
+  border-radius:36px;
+  padding:135px 22px 30px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.06)),
+    radial-gradient(circle at top,rgba(255,80,180,.22),transparent 45%);
+  border:1px solid rgba(255,190,235,.3);
+  box-shadow:
+    0 24px 55px rgba(0,0,0,.36),
+    inset 0 0 0 1px rgba(255,255,255,.1);
+  backdrop-filter:blur(10px);
+  animation:cardReveal .8s ease both;
 }
 
 @keyframes cardReveal{
-  from{opacity:0;transform:translateY(20px) scale(.98)}
+  from{opacity:0;transform:translateY(24px) scale(.97)}
   to{opacity:1;transform:translateY(0) scale(1)}
 }
 
-.card:before{
-  content:"";
-  position:absolute;
-  inset:12px;
-  border:1px solid rgba(185,145,80,.5);
-  border-radius:14px;
-  pointer-events:none;
-}
-
-.top-line{
-  text-align:center;
-  font-size:12px;
-  letter-spacing:5px;
-  color:#8b7762;
-  margin-bottom:24px;
+.badge{
+  width:max-content;
+  margin:0 auto 24px;
+  padding:10px 20px;
+  border-radius:999px;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,180,220,.32);
+  font-family:"Cinzel",serif;
+  font-size:10px;
+  letter-spacing:4px;
+  font-weight:900;
+  color:#ffd6ec;
+  position:relative;
+  z-index:3;
 }
 
 .names{
   text-align:center;
-  font-size:48px;
-  line-height:1.12;
-  color:#9d7047;
-  font-style:italic;
+  font-family:"Dancing Script",cursive;
+  font-size:76px;
+  line-height:.95;
+  font-weight:700;
+  color:#ffd7ef;
+  text-shadow:
+    0 0 8px rgba(255,255,255,.78),
+    0 0 18px rgba(255,74,170,.72);
+  position:relative;
+  z-index:3;
 }
 
-.amp{
+.and{
   text-align:center;
-  font-size:28px;
-  color:#b99155;
-  margin:6px 0;
+  font-size:24px;
+  font-weight:900;
+  color:#ff9fd2;
+  margin:12px 0;
+  font-family:"Cinzel",serif;
+  letter-spacing:2px;
+  text-shadow:0 0 10px rgba(255,90,180,.7);
+  position:relative;
+  z-index:3;
+}
+
+.headline{
+  text-align:center;
+  margin-top:24px;
+  font-size:24px;
+  font-weight:900;
+  color:#ffb3dd;
+  text-shadow:0 0 10px rgba(255,70,170,.7);
 }
 
 .desc{
   text-align:center;
-  font-size:16px;
-  line-height:1.7;
-  margin:24px 0;
-  color:#5c4a3e;
+  margin:14px auto 24px;
+  max-width:370px;
+  font-size:14px;
+  line-height:1.9;
+  color:#f7d9ff;
 }
 
-.divider{
-  width:120px;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#b89252,transparent);
-  margin:20px auto;
+.info-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:13px;
+  margin:22px 0;
 }
 
-.info{text-align:center;margin:18px 0}
+.info-box{
+  padding:19px 16px;
+  border-radius:26px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 12px 24px rgba(0,0,0,.14);
+  text-align:center;
+}
 
 .label{
-  font-size:12px;
-  letter-spacing:5px;
-  color:#a18460;
-  margin-bottom:8px;
+  font-family:"Cinzel",serif;
+  font-size:10px;
+  letter-spacing:4px;
+  font-weight:900;
+  color:#ffc2e4;
+  margin-bottom:9px;
 }
 
-.big-date{
-  font-size:58px;
-  color:#8d633f;
-  line-height:1;
+.big{
+  font-size:23px;
+  font-weight:900;
+  color:#ffe1f2;
+  text-shadow:0 0 8px rgba(255,95,180,.72);
 }
 
 .text{
-  font-size:17px;
-  line-height:1.8;
+  font-size:14px;
+  color:#f4d9ff;
+  line-height:1.7;
 }
 
-/* Buttons */
 .location-btn,.calendar-btn{
-  width:86%;
-  height:50px;
-  margin:20px auto;
+  width:88%;
+  height:54px;
+  margin:16px auto;
   display:flex;
   align-items:center;
   justify-content:center;
   border-radius:999px;
-  font-family:Georgia,serif;
-  letter-spacing:3px;
+  font-family:"Cinzel",serif;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1.8px;
   cursor:pointer;
   position:relative;
   overflow:hidden;
   transition:.25s ease;
+  color:#ffe8f6;
 }
 
 .location-btn{
-  border:1px solid rgba(170,125,55,.6);
-  background:linear-gradient(145deg,#fffaf1,#ead3a4);
-  color:#6c4b30;
-  box-shadow:0 10px 24px rgba(150,105,40,.14);
+  border:1px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.13);
 }
 
 .calendar-btn{
   border:0;
-  background:linear-gradient(145deg,#c6a45b,#9c7433);
-  color:#fff8e6;
-  box-shadow:0 14px 30px rgba(130,85,25,.24);
+  background:linear-gradient(135deg,#ff2f9a,#ff9b58);
+  box-shadow:0 14px 26px rgba(255,80,150,.25);
 }
 
-.location-btn:before,
-.calendar-btn:before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-120%;
-  width:80%;
-  height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);
-  animation:buttonShine 2.2s ease-in-out infinite;
-}
+button:active{transform:scale(.96)}
 
-@keyframes buttonShine{
-  0%{left:-120%}
-  55%{left:130%}
-  100%{left:130%}
-}
-
-button:active{
-  transform:scale(.96);
-}
-
-/* Countdown */
 .countdown{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -375,188 +495,264 @@ button:active{
 }
 
 .box{
-  height:72px;
-  border-radius:12px;
-  border:1px solid rgba(180,140,80,.35);
-  background:#fffbf5;
+  height:76px;
+  border-radius:20px;
+  background:rgba(255,255,255,.11);
+  border:1px solid rgba(255,190,225,.24);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  box-shadow:0 8px 20px rgba(100,70,30,.08);
 }
 
-.num{font-size:25px;color:#8d633f}
-.cap{font-size:10px;letter-spacing:2px;color:#9b8a78;margin-top:6px}
+.num{
+  font-size:24px;
+  font-weight:900;
+  color:#ffd8ec;
+}
+
+.cap{
+  font-family:"Cinzel",serif;
+  font-size:8px;
+  letter-spacing:1.8px;
+  color:#ffb8dc;
+  margin-top:6px;
+}
 
 .quran{
-  text-align:center;
-  font-size:20px;
-  line-height:2;
   direction:rtl;
-  margin-top:18px;
-  color:#4d4038;
+  text-align:center;
+  margin-top:24px;
+  padding:22px 14px;
+  border-radius:24px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,190,225,.2);
+  font-size:17px;
+  line-height:2;
+  color:#ffe4f3;
 }
 
 .surah{
+  margin-top:8px;
   text-align:center;
-  margin-top:10px;
-  color:#a18460;
-  font-size:13px;
+  font-family:"Cinzel",serif;
+  font-size:11px;
+  letter-spacing:1.5px;
+  color:#ffc1e4;
 }
 
 .signature{
   text-align:center;
-  margin-top:22px;
-  font-size:27px;
-  color:#a67852;
-  font-style:italic;
+  margin-top:24px;
+  font-family:"Dancing Script",cursive;
+  font-size:44px;
+  font-weight:700;
+  line-height:1.25;
+  color:#ffd8ef;
+}
+
+.float-item{
+  position:absolute;
+  pointer-events:none;
+  opacity:.28;
+  animation:floatDown linear infinite;
+}
+
+.float-item::before{
+  content:"";
+  display:block;
+  width:100%;
+  height:100%;
+  border-radius:70% 30% 70% 30%;
+  background:linear-gradient(145deg,#fff0f5,#ff4f91);
+}
+
+.float-item.light::before{
+  border-radius:50%;
+  background:rgba(255,255,255,.85);
+}
+
+@keyframes floatDown{
+  from{transform:translateY(-130px) rotate(0deg);opacity:0}
+  15%{opacity:.42}
+  85%{opacity:.42}
+  to{transform:translateY(112vh) rotate(360deg);opacity:0}
+}
+
+@media(max-width:390px){
+  .env-dove-left,.env-dove-right{
+    width:135px;
+    top:122px;
+  }
+
+  .card-dove-left,.card-dove-right{
+    width:98px;
+    top:40px;
+  }
+
+  .names{font-size:66px}
 }
 </style>
 </head>
 
 <body>
 
-<audio id="weddingMusic" src="wedding-music.mp3" loop preload="auto"></audio>
 <audio id="zaghareetSound" src="zaghareet.mp3" preload="auto"></audio>
-
-<div class="falling" id="falling"></div>
+<audio id="weddingMusic" src="wedding-music.mp3" loop preload="auto"></audio>
 
 <div class="page">
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
 
-<section id="envelopeScreen" class="screen active">
-  <img src="dove.png" class="dove dove-left" alt="">
-  <img src="dove.png" class="dove dove-right" alt="">
+  <section id="envelopeScreen" class="screen active">
+    <img src="dove.webp?v=10008" class="dove env-dove-left" alt="">
+    <img src="dove.webp?v=10008" class="dove env-dove-right" alt="">
 
-  <div class="center">
-    <div class="envelope">
-      <div class="seal">M♥M</div>
-      <button class="open-btn" onclick="openInvitation()" aria-label="Open Invitation"></button>
+    <div class="center">
+      <div class="envelope-wrap">
+        <div class="envelope" id="envelope">
+          <div class="flap"></div>
+
+          <div class="seal">
+            <div class="seal-name">Yahya</div>
+            <div class="seal-and">AND</div>
+            <div class="seal-name">Amira</div>
+          </div>
+
+          <button class="open-btn" onclick="openInvitation()" aria-label="Open Invitation"></button>
+        </div>
+
+        <div class="burst">
+          <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+          <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+        </div>
+      </div>
+
+      <div class="tap-arrow">↑</div>
+      <div class="tap">TAP TO OPEN</div>
     </div>
-    <div class="tap">TAP TO OPEN</div>
-  </div>
-</section>
+  </section>
 
-<section id="invitationScreen" class="screen">
-  <div class="card">
-    <img src="dove.png" class="dove card-dove-left" alt="">
-    <img src="dove.png" class="dove card-dove-right" alt="">
+  <section id="invitationScreen" class="screen">
+    <div class="card">
+      <img src="dove.webp?v=10008" class="dove card-dove-left" alt="">
+      <img src="dove.webp?v=10008" class="dove card-dove-right" alt="">
 
-    <div class="top-line">TOGETHER WITH THEIR FAMILIES</div>
+      <div class="badge">WEDDING CELEBRATION</div>
 
-    <div class="names">Mo'men</div>
-    <div class="amp">&</div>
-    <div class="names">Menna</div>
+      <div class="names">Yahya</div>
+      <div class="and">And</div>
+      <div class="names">Amira</div>
 
-    <div class="desc">
-      request the pleasure of your company<br>
-      at the celebration of their wedding
+      <div class="headline">We're getting married!</div>
+
+      <div class="desc">
+        With hearts full of joy, we invite you to share an elegant evening of love,
+        celebration, music, and unforgettable memories.
+      </div>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <div class="label">WHEN</div>
+          <div class="big">Friday, 26 June 2026</div>
+          <div class="text">4:00 PM</div>
+        </div>
+
+        <div class="info-box">
+          <div class="label">WHERE</div>
+          <div class="big">Tokh Wedding Hall</div>
+          <div class="text">Tokh, Qalyubia</div>
+        </div>
+      </div>
+
+      <button class="location-btn" onclick="openLocation()">Open Location</button>
+
+      <div class="countdown">
+        <div class="box"><div id="days" class="num">00</div><div class="cap">DAYS</div></div>
+        <div class="box"><div id="hours" class="num">00</div><div class="cap">HOURS</div></div>
+        <div class="box"><div id="minutes" class="num">00</div><div class="cap">MIN</div></div>
+        <div class="box"><div id="seconds" class="num">00</div><div class="cap">SEC</div></div>
+      </div>
+
+      <button class="calendar-btn" onclick="addToCalendar()">Add to Calendar</button>
+
+      <div class="quran">
+        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا<br>
+        لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+        <div class="surah">Surah Ar-Rum — 21</div>
+      </div>
+
+      <div class="signature">See you there,<br>Yahya And Amira</div>
     </div>
-
-    <div class="divider"></div>
-
-    <div class="info">
-      <div class="label">WHEN</div>
-      <div class="text">Friday</div>
-      <div class="big-date">29</div>
-      <div class="text">May 2026 · 4:00 PM</div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="info">
-      <div class="label">WHERE</div>
-      <div class="text">Al Aly Al Azeem</div>
-      <div class="text">Almazah</div>
-    </div>
-
-    <button class="location-btn" onclick="openLocation()">Open in Google Maps</button>
-
-    <div class="countdown">
-      <div class="box"><div id="days" class="num">00</div><div class="cap">DAYS</div></div>
-      <div class="box"><div id="hours" class="num">00</div><div class="cap">HOURS</div></div>
-      <div class="box"><div id="minutes" class="num">00</div><div class="cap">MINUTES</div></div>
-      <div class="box"><div id="seconds" class="num">00</div><div class="cap">SECONDS</div></div>
-    </div>
-
-    <button class="calendar-btn" onclick="addToCalendar()">Add to Calendar</button>
-
-    <div class="quran">
-      وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا<br>
-      لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
-    </div>
-
-    <div class="surah">سورة الروم — الآية ٢١</div>
-
-    <div class="signature">With love, Mo'men & Menna</div>
-  </div>
-</section>
-
+  </section>
 </div>
 
 <script>
-const locationUrl = "https://maps.app.goo.gl/gLgjUCauDo4yuqns7?g_st=ac";
-const weddingDate = new Date("2026-05-29T16:00:00").getTime();
+const locationUrl = "https://maps.app.goo.gl/6NJL4mUi18BZquAC8?g_st=ac";
+const weddingDate = new Date("2026-06-26T16:00:00").getTime();
 
-const weddingMusic = document.getElementById("weddingMusic");
 const zaghareetSound = document.getElementById("zaghareetSound");
+const weddingMusic = document.getElementById("weddingMusic");
 
 function vibratePhone(){
-  if("vibrate" in navigator){
-    navigator.vibrate([90,40,90]);
-  }
+  if("vibrate" in navigator) navigator.vibrate([80,35,80]);
 }
 
-function playAudio(){
+function playZaghareet(){
+  if(!zaghareetSound) return;
   zaghareetSound.currentTime = 0;
   zaghareetSound.volume = 0.9;
   zaghareetSound.play().catch(()=>{});
+}
 
-  weddingMusic.volume = 0.68;
+function playWeddingMusic(){
+  if(!weddingMusic) return;
+  weddingMusic.currentTime = 0;
+  weddingMusic.volume = 0.58;
   weddingMusic.play().catch(()=>{});
 }
 
 function openInvitation(){
   vibratePhone();
-  playAudio();
+  playZaghareet();
 
-  document.getElementById("envelopeScreen").classList.remove("active");
-  document.getElementById("invitationScreen").classList.add("active");
+  document.getElementById("envelope").classList.add("open");
+
+  setTimeout(()=>{
+    document.getElementById("envelopeScreen").classList.remove("active");
+    document.getElementById("invitationScreen").classList.add("active");
+    playWeddingMusic();
+  },1350);
 }
 
 function openLocation(){
   vibratePhone();
-  playAudio();
   window.open(locationUrl,"_blank");
 }
 
 function addToCalendar(){
   vibratePhone();
-  playAudio();
 
   const url =
     "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-    "&text=Mo'men%20%26%20Menna%20Wedding" +
-    "&dates=20260529T130000Z/20260529T160000Z" +
+    "&text=Yahya%20And%20Amira%20Wedding" +
+    "&dates=20260626T130000Z/20260626T160000Z" +
     "&details=Wedding%20Invitation" +
-    "&location=Al%20Aly%20Al%20Azeem%2C%20Almazah";
+    "&location=Tokh%20Wedding%20Hall%2C%20Tokh%2C%20Qalyubia";
 
   window.open(url,"_blank");
 }
 
 function updateCountdown(){
   const distance = weddingDate - Date.now();
-
   const d = document.getElementById("days");
   const h = document.getElementById("hours");
   const m = document.getElementById("minutes");
   const s = document.getElementById("seconds");
 
   if(distance <= 0){
-    d.textContent="00";
-    h.textContent="00";
-    m.textContent="00";
-    s.textContent="00";
+    d.textContent=h.textContent=m.textContent=s.textContent="00";
     return;
   }
 
@@ -569,19 +765,17 @@ function updateCountdown(){
 setInterval(updateCountdown,1000);
 updateCountdown();
 
-/* Falling animation */
-const falling = document.getElementById("falling");
-const items = ["🌹","💗","💕","💖","✨","⭐","✦"];
-
-for(let i=0;i<34;i++){
+for(let i=0;i<28;i++){
   const el = document.createElement("div");
-  el.className = "fall-item";
-  el.textContent = items[Math.floor(Math.random()*items.length)];
+  el.className = "float-item" + (i % 5 === 0 ? " light" : "");
+  const size = i % 5 === 0 ? (3 + Math.random()*4) : (8 + Math.random()*10);
+  el.style.width = size + "px";
+  el.style.height = size + "px";
   el.style.left = Math.random()*100 + "%";
-  el.style.fontSize = (10 + Math.random()*15) + "px";
-  el.style.animationDuration = (7 + Math.random()*8) + "s";
-  el.style.animationDelay = (Math.random()*7) + "s";
-  falling.appendChild(el);
+  el.style.top = "-140px";
+  el.style.animationDuration = (10 + Math.random()*10) + "s";
+  el.style.animationDelay = (Math.random()*8) + "s";
+  document.body.appendChild(el);
 }
 </script>
 
